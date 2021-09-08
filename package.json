@@ -6,12 +6,17 @@
   "author": "kry-p <jhjung.dev@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "next": "^11.1.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "babel-plugin-styled-components": "^1.13.2",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -24,7 +29,7 @@
     "prettier": "^2.3.2"
   },
   "scripts": {
-    "next": "next",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   }

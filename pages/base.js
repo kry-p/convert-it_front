@@ -5,6 +5,6 @@ const MainStyle = styled.div`
   justify-content: center;
 `;
 
-const Index = () => <MainStyle>여기가 메인 페이지입니다.</MainStyle>;
+const Base = () => <MainStyle>진법변환 페이지입니다.</MainStyle>;
 
-export default Index;
+export default Base;
