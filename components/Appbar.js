@@ -61,11 +61,6 @@ const Appbar = (props) => {
               <Typography variant="h6" className={classes.title}>
                 Convert-it!
               </Typography>
-              <Link href="/">
-                <IconButton edge="start" color="inherit" aria-label="home">
-                  <Home />
-                </IconButton>
-              </Link>
             </Toolbar>
           </AppBar>
         </div>
