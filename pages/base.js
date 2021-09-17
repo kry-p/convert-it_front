@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
 
+const uri = 'https://jsonplaceholder.typicode.com/todos/1';
 const MainStyle = styled.div`
   display: flex;
   flex-direction: row;
@@ -16,13 +18,22 @@ const MainStyle = styled.div`
 
 const Base = () => {
   const [input, setInput] = useState(0);
+  const [output, setOutput] = useState(0);
   const onChangeInput = (e) => {
-    setInput(e.target.value);
-  };
+    // const result = getResponse({
+    //   method: 'base',
+    //   data: e.target.input,
+    // });
 
-  useEffect(() => {
-    console.log(input);
-  });
+    //   const result = await axios.post(uri, {
+    //     params: { method: input.type, data: input.data },
+    //   });
+
+    setInput(e.target.value);
+    axios.get(uri).then((response) => {
+      setOutput(response.data.userId);
+    });
+  };
 
   return (
     <MainStyle>
@@ -38,8 +49,8 @@ const Base = () => {
       <TextField
         className="item"
         id="result"
-        label="결과"
         variant="outlined"
+        value={output}
         disabled
       />
     </MainStyle>

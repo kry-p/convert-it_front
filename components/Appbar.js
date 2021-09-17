@@ -1,11 +1,7 @@
 import React from 'react';
 
-// Next.js router
-import Link from 'next/link';
-
 // Material UI components
 import { makeStyles } from '@material-ui/core/styles';
-import { Home } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
