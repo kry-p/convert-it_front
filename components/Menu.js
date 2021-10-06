@@ -1,25 +1,7 @@
-import { Button } from '@material-ui/core';
-import styled from 'styled-components';
+import { Button } from '@mui/material';
 import Link from 'next/link';
 
-const MenuStyle = styled.div`
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  justify-content: space-around;
-
-  .item {
-    margin: 0 auto;
-  }
-
-  /* @media (min-width: 600px) {
-    width: 600px;
-  } */
-`;
+import { MenuStyle } from './Styles';
 
 const Menu = () => {
   return (
