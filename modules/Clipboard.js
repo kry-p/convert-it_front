@@ -1,5 +1,5 @@
+/* eslint-disable no-alert */
 const copyResult = (output) => {
-  console.log('test');
   if (!document.queryCommandSupported('copy')) {
     alert('복사를 지원하지 않는 브라우저입니다.');
   }

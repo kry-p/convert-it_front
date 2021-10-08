@@ -6,6 +6,7 @@ import Menu from '../components/Menu';
 
 import '../styles/global.css';
 
+// global theme
 const theme = createTheme({
   typography: {
     fontFamily: '"S-CoreDream-3Light", serif',

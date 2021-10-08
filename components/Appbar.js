@@ -1,3 +1,7 @@
+/*
+ * Appbar
+ * note: menu button does not implemented
+ */
 import React from 'react';
 
 // Material UI components

@@ -1,3 +1,6 @@
+/*
+ * Stylesheets with styled-components
+ */
 import styled, { css } from 'styled-components';
 import { red } from '@mui/material/colors';
 

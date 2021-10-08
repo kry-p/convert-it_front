@@ -5,7 +5,7 @@
   "repository": "https://github.com/kry-p/convert-it_front.git",
   "author": "kry-p <jhjung.dev@gmail.com>",
   "license": "MIT",
-  "proxy": "http://sigae.asuscomm.com:9210/",
+  "proxy": "http://localhost:9210/",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -37,7 +37,7 @@
     "prettier": "^2.3.2"
   },
   "scripts": {
-    "dev": "next dev -p 9210",
+    "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start"
   }

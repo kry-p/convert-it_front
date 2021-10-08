@@ -1,3 +1,6 @@
+/*
+ * Button menu component
+ */
 import { Button } from '@mui/material';
 import Link from 'next/link';
 

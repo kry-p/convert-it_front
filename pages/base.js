@@ -1,7 +1,18 @@
+/*
+ * Base converter page
+ */
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import { Button, Slider, TextField } from '@mui/material';
+// Material UI components
+import {
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from '@mui/material';
 
 import { TypoStyle, ButtonStyle, FormStyle } from '../components/Styles';
 import copyResult from '../modules/Clipboard';
@@ -27,11 +38,14 @@ const bases = [
 ];
 
 const Base = () => {
+  // states
   const [output, setOutput] = useState(null);
-  const [input, setInput] = useState(0);
+  const [input, setInput] = useState('0');
   const [from, setFrom] = useState(10);
+  const [to, setTo] = useState(16);
   const [error, setError] = useState(false);
 
+  // API request
   const convert = () => {
     setInput(input.replace(' ', ''));
     const data = input.split(',').map((num) => parseInt(num, from));
@@ -41,30 +55,63 @@ const Base = () => {
       url: uri,
       data: { data },
     }).then((response) => {
-      setOutput(response.data.output);
+      setOutput(response.data[0].data.output.join(', '));
     });
   };
 
   return (
     <FormStyle>
       <div className="item">
-        <TypoStyle>입력 선택</TypoStyle>
-        <Slider
-          aria-label="진법 선택"
-          defaultValue={10}
-          min={2}
-          max={16}
-          step={null}
-          valueLabelDisplay="auto"
-          marks={bases}
-          onChange={(e) => {
-            setFrom(e.target.value);
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginBottom: '1rem',
           }}
-        />
+        >
+          <FormControl sx={{ m: 1, minWidth: 80 }}>
+            <InputLabel id="base-converter-input-label">입력 선택</InputLabel>
+            <Select
+              labelId="base-converter-input-selector-label"
+              id="base-converter-input-selector"
+              value={from}
+              label="입력 선택"
+              onChange={(e) => {
+                setFrom(e.target.value);
+              }}
+            >
+              {bases
+                .filter((item) => item.value !== to)
+                .map((item) => (
+                  <MenuItem value={item.value}>{`${item.label}진법`}</MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+          <FormControl sx={{ m: 1, minWidth: 80 }}>
+            <InputLabel id="base-converter-output-label">출력 선택</InputLabel>
+            <Select
+              labelId="base-converter-output-selector-label"
+              id="base-converter-output-selector"
+              value={to}
+              label="입력 선택"
+              onChange={(e) => {
+                setTo(e.target.value);
+              }}
+            >
+              {bases
+                .filter((item) => item.value !== from)
+                .map((item) => (
+                  <MenuItem value={item.value}>{`${item.label}진법`}</MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </div>
         <TextField
           label="변환할 값"
           helperText="변환할 값을 쉼표로 구분하여 입력"
           multiline
+          fullWidth
           value={input}
           onChange={(e) => {
             setInput(e.target.value);
