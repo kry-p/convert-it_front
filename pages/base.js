@@ -20,18 +20,22 @@ import copyResult from '../modules/Clipboard';
 const uri = 'http://sigae.asuscomm.com:9210/upload/dec_hex/dec_to_hex';
 const bases = [
   {
+    id: 0,
     value: 2,
     label: '2',
   },
   {
+    id: 1,
     value: 8,
     label: '8',
   },
   {
+    id: 2,
     value: 10,
     label: '10',
   },
   {
+    id: 3,
     value: 16,
     label: '16',
   },
@@ -84,7 +88,10 @@ const Base = () => {
               {bases
                 .filter((item) => item.value !== to)
                 .map((item) => (
-                  <MenuItem value={item.value}>{`${item.label}진법`}</MenuItem>
+                  <MenuItem
+                    key={item.id}
+                    value={item.value}
+                  >{`${item.label}진법`}</MenuItem>
                 ))}
             </Select>
           </FormControl>
@@ -102,7 +109,10 @@ const Base = () => {
               {bases
                 .filter((item) => item.value !== from)
                 .map((item) => (
-                  <MenuItem value={item.value}>{`${item.label}진법`}</MenuItem>
+                  <MenuItem
+                    key={item.id}
+                    value={item.value}
+                  >{`${item.label}진법`}</MenuItem>
                 ))}
             </Select>
           </FormControl>
