@@ -28,7 +28,7 @@ const ElevationScroll = (props) => {
 };
 
 // Appbar style
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },

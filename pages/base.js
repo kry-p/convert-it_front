@@ -47,6 +47,7 @@ const Base = () => {
   const [input, setInput] = useState('0');
   const [from, setFrom] = useState(10);
   const [to, setTo] = useState(16);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(false);
 
   // API request
