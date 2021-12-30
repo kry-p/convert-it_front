@@ -17,7 +17,7 @@ import {
 import { TypoStyle, ButtonStyle, FormStyle } from '../components/Styles';
 import copyResult from '../modules/Clipboard';
 
-const uri = 'http://sigae.asuscomm.com:9210/upload/dec_hex/dec_to_hex';
+const uri = 'https://convertit-back.sigae.kim/upload/dec_hex/dec_to_hex';
 const bases = [
   {
     id: 0,
