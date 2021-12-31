@@ -15,9 +15,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
+      - name: Checkout source code.   # 레포지토리 체크아웃
+        uses: actions/checkout@master
+
+      - name: Install Dependencies    # 의존 파일 설치
+        run: yarn install
+
+        
+      - name: Build                   # React Build
+        run: yarn build
+        
       -
         name: Docker meta
         id: docker_meta
@@ -34,8 +41,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: sigae
-          password: 414b5474-7fbc-4b0a-8f6e-8bf120a9ca32
+          username: ${{ secrets.DOCKER_HUB_ID }}
+          password: ${{ secrets.DOCKER_HUB_SECRET }}
       -
         name: Build and push
         uses: docker/build-push-action@v2
