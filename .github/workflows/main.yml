@@ -25,7 +25,6 @@ jobs:
       - name: Build                   # React Build
         run: yarn build
         
-        
       -
         name: Docker meta
         id: docker_meta
