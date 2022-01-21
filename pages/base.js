@@ -17,29 +17,33 @@ import {
 import { TypoStyle, ButtonStyle, FormStyle } from '../components/Styles';
 import copyResult from '../modules/Clipboard';
 
-const uri = 'http://sigae.asuscomm.com:9210/upload/dec_hex/dec_to_hex';
 const bases = [
   {
     id: 0,
     value: 2,
     label: '2',
+    link: 'bin',
   },
   {
     id: 1,
     value: 8,
     label: '8',
+    link: 'oct',
   },
   {
     id: 2,
     value: 10,
     label: '10',
+    link: 'dec',
   },
   {
     id: 3,
     value: 16,
     label: '16',
+    link: 'hex',
   },
 ];
+const baseValue = [2, 8, 10, 16];
 
 const Base = () => {
   // states
@@ -47,21 +51,41 @@ const Base = () => {
   const [input, setInput] = useState('0');
   const [from, setFrom] = useState(10);
   const [to, setTo] = useState(16);
-  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(false);
 
   // API request
   const convert = () => {
+    let data = input.replace(' ', '').split(',');
+    let isError = false;
+    const uri = `${process.env.NEXT_PUBLIC_API_URI}/upload/radix/${
+      bases[baseValue.findIndex((element) => element === from)].link
+    }`;
     setInput(input.replace(' ', ''));
-    const data = input.split(',').map((num) => parseInt(num, from));
-
-    axios({
-      method: 'post',
-      url: uri,
-      data: { data },
-    }).then((response) => {
-      setOutput(response.data[0].data.output.join(', '));
-    });
+    if (from === 10) {
+      try {
+        data = data.map((str) => parseInt(str, 10));
+      } catch (e) {
+        isError = true;
+      }
+    }
+    if (!isError) {
+      axios({
+        method: 'post',
+        url: uri,
+        data: {
+          to_type: bases[baseValue.findIndex((element) => element === to)].link,
+          data,
+        },
+      })
+        .then((response) => {
+          setError(false);
+          const res = response.data;
+          setOutput(res[0].data.output.join(', '));
+        })
+        .catch(() => {
+          setError(true);
+        });
+    }
   };
 
   return (
