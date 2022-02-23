@@ -15,9 +15,11 @@ import {
 } from '@mui/material';
 
 import { TypoStyle, ButtonStyle, FormStyle } from '../components/Styles';
+import { FilledButton } from '../components/common/Button';
+import Convert from '../containers/Convert';
 import copyResult from '../modules/Clipboard';
 
-const bases = [
+const BASES = [
   {
     id: 0,
     value: 2,
@@ -43,9 +45,9 @@ const bases = [
     link: 'hex',
   },
 ];
-const baseValue = [2, 8, 10, 16];
+const BASE_VALUE = [2, 8, 10, 16];
 
-const Base = () => {
+const BaseComponent = () => {
   // states
   const [output, setOutput] = useState(null);
   const [input, setInput] = useState('0');
@@ -58,7 +60,7 @@ const Base = () => {
     let data = input.replace(' ', '').split(',');
     let isError = false;
     const uri = `${process.env.NEXT_PUBLIC_API_URI}/upload/radix/${
-      bases[baseValue.findIndex((element) => element === from)].link
+      BASES[BASE_VALUE.findIndex((element) => element === from)].link
     }`;
     setInput(input.replace(' ', ''));
     if (from === 10) {
@@ -73,7 +75,8 @@ const Base = () => {
         method: 'post',
         url: uri,
         data: {
-          to_type: bases[baseValue.findIndex((element) => element === to)].link,
+          to_type:
+            BASES[BASE_VALUE.findIndex((element) => element === to)].link,
           data,
         },
       })
@@ -110,14 +113,12 @@ const Base = () => {
                 setFrom(e.target.value);
               }}
             >
-              {bases
-                .filter((item) => item.value !== to)
-                .map((item) => (
-                  <MenuItem
-                    key={item.id}
-                    value={item.value}
-                  >{`${item.label}진법`}</MenuItem>
-                ))}
+              {BASES.filter((item) => item.value !== to).map((item) => (
+                <MenuItem
+                  key={item.id}
+                  value={item.value}
+                >{`${item.label}진법`}</MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -131,14 +132,12 @@ const Base = () => {
                 setTo(e.target.value);
               }}
             >
-              {bases
-                .filter((item) => item.value !== from)
-                .map((item) => (
-                  <MenuItem
-                    key={item.id}
-                    value={item.value}
-                  >{`${item.label}진법`}</MenuItem>
-                ))}
+              {BASES.filter((item) => item.value !== from).map((item) => (
+                <MenuItem
+                  key={item.id}
+                  value={item.value}
+                >{`${item.label}진법`}</MenuItem>
+              ))}
             </Select>
           </FormControl>
         </div>
@@ -153,9 +152,10 @@ const Base = () => {
           }}
         />
         {error ? <TypoStyle error>입력을 확인해 주세요.</TypoStyle> : null}
+
         <ButtonStyle>
           <Button
-            variant="outlined"
+            variant="contained"
             onClick={() => {
               convert();
             }}
@@ -171,19 +171,22 @@ const Base = () => {
         </TypoStyle>
         {output !== null ? (
           <ButtonStyle>
-            <Button
-              variant="outlined"
+            <FilledButton
               onClick={() => {
                 copyResult(output);
               }}
             >
               결과 복사
-            </Button>
+            </FilledButton>
           </ButtonStyle>
         ) : null}
       </div>
     </FormStyle>
   );
+};
+
+const Base = () => {
+  return <Convert component={<BaseComponent />} />;
 };
 
 export default Base;

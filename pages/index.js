@@ -1,10 +1,15 @@
-import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 
-const MainStyle = styled.div`
-  display: grid;
-  justify-content: center;
-`;
+import { MainStyle } from '../components/Styles';
 
-const Index = () => <MainStyle>여기가 메인 페이지입니다.</MainStyle>;
+const AppbarWithoutSSR = dynamic(() => import('../components/appbar/Appbar'), {
+  ssr: false,
+});
 
+const Index = () => (
+  <>
+    <AppbarWithoutSSR />
+    <MainStyle />
+  </>
+);
 export default Index;

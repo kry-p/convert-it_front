@@ -4,6 +4,10 @@
 import styled, { css } from 'styled-components';
 import { red } from '@mui/material/colors';
 
+export const AppStyle = styled.div`
+  width: 100vw;
+`;
+
 export const TypoStyle = styled.div`
   text-align: center;
   padding: 0.5rem;
@@ -31,10 +35,12 @@ export const ButtonStyle = styled.div`
 
 export const FormStyle = styled.div`
   display: grid;
-  align-content: center;
+  justify-items: center;
   grid-template-columns: 1fr;
+  width: 256px;
 
   @media (min-width: 512px) {
+    width: 512px;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -56,4 +62,16 @@ export const MenuStyle = styled.div`
   .item {
     margin: 0 auto;
   }
+`;
+
+export const MainStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
 `;

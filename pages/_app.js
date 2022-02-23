@@ -1,28 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Appbar from '../components/Appbar';
-import Menu from '../components/Menu';
+import { AppStyle } from '../components/Styles';
 
 import '../styles/global.css';
 
 // global theme
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#474747',
+      light: '#727272',
+      dark: '#202020',
+    },
+  },
   typography: {
-    fontFamily: '"S-CoreDream-3Light", serif',
+    fontFamily: '"MinSans-Medium", serif',
   },
 });
-
-const AppStyle = styled.div`
-  display: grid;
-  justify-content: center;
-`;
 
 const App = ({ Component }) => (
   <ThemeProvider theme={theme}>
     <AppStyle>
-      <Appbar />
-      <Menu />
       <Component />
     </AppStyle>
   </ThemeProvider>
