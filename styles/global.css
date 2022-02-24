@@ -17,6 +17,15 @@
 }
 
 @font-face {
+  font-family: 'MinSans-Thin';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Thin.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 600;
@@ -32,4 +41,12 @@ body {
   padding: 0;
   margin: 0;
   font-family: MinSans-Medium, -apple-system, sans-serif;
+}
+
+#__next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

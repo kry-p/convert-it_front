@@ -67,11 +67,10 @@ export const MenuStyle = styled.div`
 export const MainStyle = styled.div`
   display: flex;
   justify-content: center;
-  overflow: hidden;
 
+  overflow: hidden;
   position: relative;
 
   width: 100%;
   height: 100%;
-  background-color: #fff;
 `;

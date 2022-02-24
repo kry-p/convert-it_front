@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 
 import { TypoStyle, ButtonStyle, FormStyle } from '../components/Styles';
-import { FilledButton } from '../components/common/Button';
 import Convert from '../containers/Convert';
 import copyResult from '../modules/Clipboard';
 
@@ -171,13 +170,14 @@ const BaseComponent = () => {
         </TypoStyle>
         {output !== null ? (
           <ButtonStyle>
-            <FilledButton
+            <Button
+              variant="contained"
               onClick={() => {
                 copyResult(output);
               }}
             >
               결과 복사
-            </FilledButton>
+            </Button>
           </ButtonStyle>
         ) : null}
       </div>

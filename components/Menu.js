@@ -16,9 +16,9 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import { BorderlessButton, LogoButton } from './common/Button';
 
 const menuItem = [
-  ['변환', '/base'],
-  ['API', '#'],
-  ['라이선스', '#'],
+  ['변환', '/base', '각종 변환을 할 수 있습니다.'],
+  ['API', '#', 'API 정보를 표시합니다.'],
+  ['라이선스', '#', '오픈소스 라이선스'],
 ];
 
 const convertItem = {
@@ -109,7 +109,7 @@ export const PortraitMainMenu = () => {
             <ListItem disablePadding key={item}>
               <ListItemButton sx={{ padding: '0rem 1rem 0rem' }}>
                 <Link href={item[1]}>
-                  <ListItemText primary={item[0]} secondary="테스형" />
+                  <ListItemText primary={item[0]} secondary={item[2]} />
                 </Link>
               </ListItemButton>
             </ListItem>
